@@ -10,7 +10,6 @@ from PIL import Image
 
 from sklearn.preprocessing import LabelBinarizer
 
-
 # Load the dataset
 trainingData = pd.read_csv('sign_mnist_train.csv')
 test = pd.read_csv('sign_mnist_train.csv')
@@ -52,8 +51,8 @@ for index, img in enumerate(images):
                 img_rgb,
                 hand_landmarks,
                 mp_hands.HAND_CONNECTIONS,
-                mp_drawing.DrawingSpec(color=(121, 22, 76), thickness=1, circle_radius=1),  # Custom style for landmarks
-                mp_drawing.DrawingSpec(color=(250, 44, 250), thickness=1)  # Custom style for connections
+                mp_drawing.DrawingSpec(color=(121, 22, 76), thickness=1, circle_radius=1), 
+                mp_drawing.DrawingSpec(color=(250, 44, 250), thickness=1)  # styling connections and landmarks
                 )
 
         # Display the image with landmarks
