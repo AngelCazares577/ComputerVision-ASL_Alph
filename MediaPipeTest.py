@@ -34,11 +34,9 @@ trainingData.drop('label',axis = 1, inplace = True)
 #print(train.head())
 
 images = trainingData.values
-# Ensure images are in the correct format (unsigned 8-bit integers)
-images_8bit = images.astype(np.uint8)
 
 # Reshape images back to 28x28 and convert from grayscale to RGB
-imagesrgb = np.array([cv2.cvtColor(i.reshape(28,28), cv2.COLOR_GRAY2RGB) for i in images_8bit.reshape(-1,28,28)])
+images = np.array([np.reshape(i,28,28) for i in images])
 
 
 #now to transform our labels
@@ -47,5 +45,5 @@ labels = label_binrizer.fit_transform(labelData)
 
 index = 0
 # No need to reshape imagesrgb[index] as it's already in the correct shape for RGB images.
-plt.imshow(imagesrgb[index])
+plt.imshow(images[index])
 plt.show()
