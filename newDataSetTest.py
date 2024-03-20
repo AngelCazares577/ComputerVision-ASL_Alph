@@ -14,8 +14,7 @@ hands = mp_hands.Hands(static_image_mode=True, min_detection_confidence=0.3)
 
 DATA_DIR = 'Data'
 
-data = []
-labels = []
+
 for dir_ in os.listdir(DATA_DIR):
     for img_path in os.listdir(os.path.join(DATA_DIR, dir_)):
         data_aux = []
@@ -41,6 +40,3 @@ for dir_ in os.listdir(DATA_DIR):
         plt.imshow(img_rgb)
         plt.show()
 
-f = open('data.pickle', 'wb')
-pickle.dump({'data': data, 'labels': labels}, f)
-f.close()
