@@ -34,7 +34,9 @@ label_binrizer = LabelBinarizer()
 labels = label_binrizer.fit_transform(labelData)
 
 mp_hands = mp.solutions.hands
-hands = mp_hands.Hands(static_image_mode=True, max_num_hands=1, min_detection_confidence=0.5)
+
+#hands object 
+hands = mp_hands.Hands(static_image_mode=True, max_num_hands=1, min_detection_confidence=0.3)
 
 for index, img in enumerate(images):
     # Convert grayscale to RGB
