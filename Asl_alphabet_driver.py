@@ -10,6 +10,7 @@ from PIL import Image
 
 from sklearn.preprocessing import LabelBinarizer
 
+
 # Load the dataset
 trainingData = pd.read_csv('sign_mnist_train.csv')
 test = pd.read_csv('sign_mnist_train.csv')
@@ -26,8 +27,7 @@ trainingData.drop('label',axis = 1, inplace = True)
 images = trainingData.values
 
 # Reshape images back to 28x28 and convert from grayscale to RGB
-images = np.array([np.reshape(i,(28,28)) for i in images])
-
+images = np.array([np.reshape(i,(28,)) for i in images])
 
 #now to transform our labels
 label_binrizer = LabelBinarizer()
