@@ -29,6 +29,11 @@ for directory in os.listdir(DATA_DIR):
         y_coor = [] #y coordinates of each landmark e.g palm coordinate 
 
         img = cv2.imread(os.path.join(DATA_DIR, directory, img_path))
+        #To avoid issues with a very small amount of images that couldnt load and crashed
+        if img is None:
+            print(f"Failed to load image at {os.path.join(DATA_DIR, directory, img_path)}")
+            continue
+        
         img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         #mediapipe requires RGB colored images 
 
@@ -44,7 +49,12 @@ for directory in os.listdir(DATA_DIR):
             labels.append(directory) #in my data folder, each directory is indicative of a letter. 
             data.append(xy_comp)     #append the relevant data for all landsmarks relative to the letter/current directory 
 
-myFile = open('data.pickle','wb')
-pickle.dump({"data": data,"labels": labels},myFile)
-myFile.close
+#myFile = open('data.pickle','wb')
+#pickle.dump({"data": data,"labels": labels},myFile)
+#myFile.close
 
+with open('data.pickle', 'rb') as f:
+    data = pickle.load(f)
+
+# Now you can use the data object as it was originally created
+print(data)
