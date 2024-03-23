@@ -21,7 +21,10 @@ data = [] #data array to contain.. data.
 
 
 for directory in os.listdir(DATA_DIR):
+    image_counter = 1000
     for img_path in os.listdir(os.path.join(DATA_DIR, directory)):
+        if image_counter >= 1000:  # Check if 800 images have been processed
+            break  # Exit the loop if 800 images have been processed
         
         xy_comp = [] #compiles x and y coordinates 
 
@@ -47,14 +50,8 @@ for directory in os.listdir(DATA_DIR):
                     xy_comp.append(x)
                     xy_comp.append(y)
             labels.append(directory) #in my data folder, each directory is indicative of a letter. 
-            data.append(xy_comp)     #append the relevant data for all landsmarks relative to the letter/current directory 
-
-#myFile = open('data.pickle','wb')
-#pickle.dump({"data": data,"labels": labels},myFile)
-#myFile.close
-
-with open('data.pickle', 'rb') as f:
-    data = pickle.load(f)
-
-# Now you can use the data object as it was originally created
-print(data)
+            data.append(xy_comp) 
+            image_counter += 1    
+myFile = open('coor.data','wb')
+pickle.dump({"data": data,"labels": labels},myFile)
+myFile.close

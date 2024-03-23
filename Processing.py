@@ -1,6 +1,8 @@
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
 import pickle
-with open('data.pickle', 'rb') as f:
-    data = pickle.load(f)
+import numpy as np 
+import mediapipe as mp 
 
-# Now you can use the data object as it was originally created
-print(data)
+db = pickle.load(open("coor.data",'rb'))
