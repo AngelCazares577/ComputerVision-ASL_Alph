@@ -21,6 +21,6 @@ y_predict = model.predict(testX)
 
 score = accuracy_score(y_predict, testY)
 
-print('{}% of samples were classified correctly !'.format(score * 100))
+print('{}% samples correctly identified'.format(score * 100))
 
 
