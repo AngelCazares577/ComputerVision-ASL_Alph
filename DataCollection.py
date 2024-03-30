@@ -23,7 +23,7 @@ EXPECTED_LANDMARKS = 21
 for directory in os.listdir(DATA_DIR):
     image_counter = 0
     for img_path in os.listdir(os.path.join(DATA_DIR, directory)):
-        if image_counter >= 100:  # Limit to 100 images per directory for this example
+        if image_counter >= 200:  # Limit to 100 images per directory for this example
             break
 
         img = cv2.imread(os.path.join(DATA_DIR, directory, img_path))
