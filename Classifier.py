@@ -23,4 +23,6 @@ score = accuracy_score(y_predict, testY)
 
 print('{}% samples correctly identified'.format(score * 100))
 
-
+myFile = open("HandModel",'wb')
+pickle.dump({'model':model} , myFile)
+myFile.close
